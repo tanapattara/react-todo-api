@@ -2,7 +2,7 @@ module.exports = {
   HOST: "localhost",
   USER: "root",
   PASSWORD: "",
-  DB: "react_crud_api",
+  DB: "todoapi",
   dialect: "mysql",
   pool: {
     max: 5,

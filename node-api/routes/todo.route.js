@@ -1,5 +1,5 @@
 module.exports = (app) => {
-  const todos = require("../controllers/todo.controller.js");
+  const todos = require("../controllers/todo.controller");
 
   var router = require("express").Router();
 
@@ -10,7 +10,7 @@ module.exports = (app) => {
   router.get("/", todos.findAll);
 
   // Retrieve all published todos
-  router.get("/published", todos.findAllPublished);
+  router.get("/done", todos.findAllDone);
 
   // Retrieve a single todos with id
   router.get("/:id", todos.findOne);

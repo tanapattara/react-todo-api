@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require("../models/db");
 const Todo = db.todo;
 const Op = db.Sequelize.Op;
 
@@ -49,7 +49,7 @@ exports.findAll = (req, res) => {
 // Find a single Todo with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-
+  console.log(id);
   Todo.findByPk(id)
     .then((data) => {
       res.send(data);
