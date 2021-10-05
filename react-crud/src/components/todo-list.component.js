@@ -12,18 +12,18 @@ const TodosList = () => {
     retrieveTodos();
   }, []);
 
-  const onChangeSearchName = e => {
+  const onChangeSearchName = (e) => {
     const searchName = e.target.value;
     setSearchName(searchName);
   };
 
   const retrieveTodos = () => {
     TodoDataService.getAll()
-      .then(response => {
+      .then((response) => {
         setTodos(response.data);
         console.log(response.data);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   };
@@ -34,29 +34,29 @@ const TodosList = () => {
     setCurrentIndex(-1);
   };
 
-  const setActiveTutorial = (tutorial, index) => {
-    setCurrentTodo(tutorial);
+  const setDoneTodo = (todo, index) => {
+    setCurrentTodo(todo);
     setCurrentIndex(index);
   };
 
   const removeAllTodo = () => {
     TodoDataService.removeAll()
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
         refreshList();
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   };
 
   const findByName = () => {
     TodoDataService.findByName(searchName)
-      .then(response => {
+      .then((response) => {
         setTodos(response.data);
         console.log(response.data);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   };
@@ -93,7 +93,7 @@ const TodosList = () => {
                 className={
                   "list-group-item " + (index === currentIndex ? "active" : "")
                 }
-                onClick={() => setActiveTutorial(todo, index)}
+                onClick={() => setDoneTodo(todo, index)}
                 key={index}
               >
                 {todo.name}
@@ -101,10 +101,7 @@ const TodosList = () => {
             ))}
         </ul>
 
-        <button
-          className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllTodo}
-        >
+        <button className="m-3 btn btn-sm btn-danger" onClick={removeAllTodo}>
           Remove All
         </button>
       </div>
@@ -125,10 +122,7 @@ const TodosList = () => {
               {currentTodo.done ? "Done" : "Plan"}
             </div>
 
-            <Link
-              to={"/todo/" + currentTodo.id}
-              className="badge bg-warning"
-            >
+            <Link to={"/todo/" + currentTodo.id} className="badge bg-warning">
               Edit
             </Link>
           </div>
